@@ -17,7 +17,7 @@ There are two main steps: 1. using unsupervised learning techniques for customer
 
 ## II. Analysis
 
-### Data Exploration and Visualization (needs figures)
+### Data Exploration and Visualization 
 
 There are six data files provided by this project:
 
@@ -28,7 +28,16 @@ There are six data files provided by this project:
 - `Udacity_MAILOUT_052018_TRAIN.csv`: Demographics data for individuals who were targets of a marketing campaign; 42 982 persons (rows) x 367 (columns).
 - `Udacity_MAILOUT_052018_TEST.csv`: Demographics data for individuals who were targets of a marketing campaign; 42 833 persons (rows) x 366 (columns).
 
-The first two are for customer segmentation by unsupervised learning. `Udacity_AZDIAS_052018.csv` is about 1.1 G with 366 features. A lot of abnormal data needs to be fixed before further analysis. The two Excel spreadsheets provide more descriptions of columns in the first data files. Based on the former analysis, the last two are used to predict potential customers by a supervised model.
+The first two are for customer segmentation by unsupervised learning. `Udacity_AZDIAS_052018.csv` is about 1.1 G with 366 features. A lot of abnormal data needs to be fixed before further analysis. 
+
+[![NaN in Azdias](figures/missing_data1.png "NaN in Azdias")](https://github.com/27septembre/Capstone-Project-22/blob/231ca75708e24bf54b1716dc5a903ab40afc1a99/figures/missing_data1.png "NaN in Azdias")
+
+[![NaN in Custumer](figures/missing_data2.png "NaN in Custumer")](httphttps://github.com/27septembre/Capstone-Project-22/blob/231ca75708e24bf54b1716dc5a903ab40afc1a99/figures/missing_data2.png:// "NaN in Custumer")
+
+The two Excel spreadsheets provide more descriptions of columns in the first data files. Based on the former analysis, the last two are used to predict potential customers by a supervised model.  "RESPONSE" in `Udacity_MAILOUT_052018_TRAIN.csv` is the target which indicates who is customer. There are only 532 customers  (1.2% of the total) in the Training data.
+
+[![response](figures/response.png "response")](https://github.com/27septembre/Capstone-Project-22/blob/0b7107c8ae6b4d1f6e0df5ebe5660a6748b6119c/figures/response.png "response")
+
 
 All the data contain missing data and mismatches, so it is necessary to do data preprocessing.
 
@@ -51,10 +60,6 @@ When loading the origin data, the warning is shown: DtypeWarning: Columns (_CAME
 273 out of 366 columns in `Udacity_AZDIAS_052018.csv` have nan, and 273 out of 369 columns in  `Udacity_CUSTOMERS_052018.csv` have nan. After exploring the two Attributes files,  there are some values marked as ['unknown', 'unknown / no main age detectable',' no transactions known', ' no transaction known']. They need to be replaced into NaN by building an associated dictionary from Attributes files.
 
 The columns that have more than 30% of NaN will be dropped out in `Udacity_AZDIAS_052018.csv`, while more than 20% in `Udacity_CUSTOMERS_052018.csv`. The rows that contain more than 50% of NaN will be dropped as well.
-
-[![NaN in Azdias](figures/missing_data1.png "NaN in Azdias")](https://github.com/27septembre/Capstone-Project-22/blob/231ca75708e24bf54b1716dc5a903ab40afc1a99/figures/missing_data1.png "NaN in Azdias")
-
-[![NaN in Custumer](figures/missing_data2.png "NaN in Custumer")](httphttps://github.com/27septembre/Capstone-Project-22/blob/231ca75708e24bf54b1716dc5a903ab40afc1a99/figures/missing_data2.png:// "NaN in Custumer")
 
 #### 3. Clean and Encode with categorical data
 There are still three categorical columns [_CAMEO_DEU_2015 _, _EINGEFUEGT_AM _,_OST_WEST_KZ_] in Azidas:
